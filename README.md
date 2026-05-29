@@ -11,7 +11,7 @@ Livith-Skills/
 ├── skills/                    # 에이전트 스킬 저장 폴더
 │   └── {skill-name}/          # 각 스킬 폴더
 │       ├── README.md          # 사람을 위한 스킬 설명서
-│       └── skill.md           # 실제 에이전트 프롬프트 (에이전트용)
+│       └── SKILL.md           # 실제 에이전트 프롬프트 (에이전트용)
 ├── .github/
 │   └── PULL_REQUEST_TEMPLATE.md  # 스킬 병합 요청 템플릿
 ├── CONTRIBUTING.md            # 기여 가이드라인
@@ -22,13 +22,11 @@ Livith-Skills/
 
 ## 🚀 사용 방법
 
-### 스킬 찾기
-`skills/` 폴더를 확인하여 원하는 스킬을 찾습니다.
+이 프롬프트를 당신의 LLM 에이전트에 붙여넣으세요:
 
-### 스킬 적용하기
-1. 해당 스킬 폴더의 `skill.md` 파일을 엽니다.
-2. 내용을 복사하여 사용하는 AI 에이전트(Claude, GPT, Copilot 등)에 적용합니다.
-3. `README.md`를 참고하여 사용법과 주의사항을 확인합니다.
+```
+https://github.com/mediunn/Livith-Skills/blob/main/docs/guide/installation.md 의 지시사항을 따라줘.
+```
 
 ---
 
@@ -38,7 +36,7 @@ Livith-Skills/
 
 ### 간단한 절차
 1. `skills/` 하위에 새로운 폴더를 만듭니다.
-2. `README.md`와 `skill.md`를 작성합니다.
+2. `README.md`와 `SKILL.md`를 작성합니다.
 3. Pull Request를 생성합니다. (자동으로 PR 템플릿이 적용됩니다.)
 
 ---
