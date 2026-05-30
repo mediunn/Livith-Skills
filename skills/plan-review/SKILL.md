@@ -101,12 +101,19 @@ Receive the fork's output and check the status.
 4. Re-dispatch the review subagent (Step 2) with the revised plan.
 5. Repeat until PASS or the retry limit is reached.
 
-**Retry limit:**
-- Maximum 3 review iterations per plan.
-- If BLOCK persists after 3 iterations, output:
-  *"The plan has been revised 3 times but still has unresolved Critical or Major issues.
-  This may indicate the plan itself is fundamentally flawed. Consider rewriting the
-  plan from scratch."*
+**Retry limit (adaptive):**
+The maximum retry count scales with the Plan's complexity:
+
+| Plan Steps | Max retries |
+|------------|-------------|
+| 1~5 (small) | 3 |
+| 6~15 (medium) | 5 |
+| 16+ (large) | 7 |
+
+- If BLOCK persists after the max retries, output:
+  *"The plan has been revised {N} times but still has unresolved Critical or Major
+  issues. This may indicate the plan itself is fundamentally flawed. Consider
+  rewriting the plan from scratch."*
 - The user may override the retry limit and proceed with a BLOCK plan if they choose.
 
 **If the fork returns errors or cannot parse the plan:**
