@@ -1,6 +1,6 @@
 ---
 name: plan-review
-description: Use this skill whenever the user is about to execute a plan and asks you to review it first — whether they have a formal plan document or just described their approach in conversation. The skill structures their plan, dispatches a cold-eyed subagent to find blind spots, ambiguous steps, feasibility risks, hidden assumptions, and simpler alternatives, then blocks execution until Critical and Major issues are resolved. Key triggers: user says "review my plan", "check my approach", "find gaps", "what am I missing", "실행 전에 검토해줘", "계획에 빠진 부분", "내 계획 좀 봐줘", or anything involving plan validation before starting work. Does NOT trigger for code review, document proofreading, debugging, or writing a new plan from scratch.
+description: 'Use this skill whenever the user is about to execute a plan and asks you to review it first — whether they have a formal plan document or just described their approach in conversation. The skill structures their plan, dispatches a cold-eyed subagent to find blind spots, ambiguous steps, feasibility risks, hidden assumptions, and simpler alternatives, then blocks execution until Critical and Major issues are resolved. Key triggers: user says "review my plan", "check my approach", "find gaps", "what am I missing", "실행 전에 검토해줘", "계획에 빠진 부분", "내 계획 좀 봐줘", or anything involving plan validation before starting work. Does NOT trigger for code review, document proofreading, debugging, or writing a new plan from scratch.'
 ---
 
 # Plan Review Skill
@@ -64,6 +64,11 @@ Spawn a fork subagent with the extracted plan structure and the reviewer prompt.
 **Do NOT pass:**
 - The original plan document or full conversation history.
 - Your own session context or reasoning process.
+
+**Fork constraints (CRITICAL):**
+- The fork is **read-only**. It must NOT write, edit, or create any files.
+- The fork's only job is to read the plan structure and return a text review.
+- If the fork attempts any file mutations, treat that as a violation.
 
 The fork will review the plan against these five dimensions
 (fully defined in `references/review-dimensions.md`):
